@@ -1,0 +1,8 @@
+{
+  "name": "fieldnotes-ui-tests",
+  "private": true,
+  "type": "module",
+  "description": "Optional DOM integration tests; production frontend has no build dependencies",
+  "scripts": {"test": "python scripts/ui_smoke.py"},
+  "devDependencies": {"jsdom": "26.1.0"}
+}

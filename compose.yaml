@@ -1,0 +1,25 @@
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8081:8000"
+    environment:
+      FN_DATABASE_PATH: /data/fieldnotes.db
+      FN_COOKIE_SECURE: ${FN_COOKIE_SECURE:-false}
+      FN_SITE_NAME: ${FN_SITE_NAME:-Fieldnotes}
+      FN_SESSION_HOURS: ${FN_SESSION_HOURS:-12}
+      FN_LOGIN_LIMIT: ${FN_LOGIN_LIMIT:-20}
+    volumes:
+      - fieldnotes_data:/data
+    read_only: true
+    tmpfs:
+      - /tmp:size=32m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 128
+    mem_limit: 512m
+volumes:
+  fieldnotes_data:

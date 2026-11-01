@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#f6f3ec" />
+    <title>Fieldnotes · A place for useful knowledge</title>
+    <link rel="icon" href="/static/mark.svg" />
+    <link rel="stylesheet" href="/static/app.css" />
+    <script type="module" src="/static/app.js"></script>
+  </head>
+  <body>
+    <section id="login-screen" class="login-screen" hidden>
+      <div class="login-story">
+        <a class="brand" href="/"
+          ><img src="/static/mark.svg" alt="" />fieldnotes<span class="edition"
+            >SELF HOSTED</span
+          ></a
+        >
+        <div>
+          <p class="eyebrow">LESS SEARCHING. MORE KNOWING.</p>
+          <h1>Keep the knowledge.<br />Pass it on.</h1>
+          <p class="story-copy">
+            A quiet home for practical guides, well-worn routines, and things
+            worth remembering.
+          </p>
+          <div class="paper-stack" aria-hidden="true">
+            <div class="paper">
+              <small>THE FIELD GUIDE</small
+              ><strong>A little structure.<br />A lot of clarity.</strong
+              ><span>01 &nbsp; Collect what matters</span
+              ><span>02 &nbsp; Make it useful</span
+              ><span>03 &nbsp; Keep it current</span>
+            </div>
+          </div>
+        </div>
+        <small class="muted"
+          >Your server. Your notes. No external account.</small
+        >
+      </div>
+      <div class="login-panel">
+        <form id="login-form">
+          <p class="eyebrow">OPEN YOUR WORKSPACE</p>
+          <h2>Welcome back.</h2>
+          <p class="muted">Sign in with your local account.</p>
+          <label
+            >Username<input
+              name="username"
+              required
+              maxlength="64"
+              autocomplete="username" /></label
+          ><label
+            >Password<input
+              name="password"
+              type="password"
+              required
+              maxlength="256"
+              autocomplete="current-password"
+          /></label>
+          <p class="error" role="alert"></p>
+          <button class="primary wide" type="submit">
+            Open Fieldnotes <span>→</span>
+          </button>
+          <p class="login-help">
+            First time? Create your account on the server:<br /><code
+              >fieldnotes user create admin</code
+            >
+          </p>
+        </form>
+      </div>
+    </section>
+    <div id="app-screen" class="app-shell" hidden>
+      <aside class="sidebar">
+        <a class="brand" href="/"
+          ><img src="/static/mark.svg" alt="" />fieldnotes</a
+        >
+        <p class="nav-label">YOUR WORKSPACE</p>
+        <nav aria-label="Workspace">
+          <button data-route="library"><span>▤</span> All documents</button
+          ><button data-route="bookmarks"><span>☆</span> Bookmarks</button
+          ><button data-route="reviews"><span>◷</span> Review queue</button
+          ><button data-route="runs"><span>☑</span> My checklists</button
+          ><button data-route="archive" data-editor>
+            <span>▧</span> Archive
+          </button>
+        </nav>
+        <div class="notebook-heading">
+          <p class="nav-label">NOTEBOOKS</p>
+          <button
+            data-action="new-notebook"
+            data-editor
+            class="icon"
+            aria-label="Add notebook"
+          >
+            +
+          </button>
+        </div>
+        <nav id="notebook-nav" aria-label="Notebooks"></nav>
+        <div class="sidebar-bottom">
+          <button data-route="workspace" data-admin>Workspace settings</button
+          ><button data-route="audit" data-admin>Activity log</button
+          ><button data-action="account" id="account-label">Your account</button
+          ><button data-action="logout">Sign out ↗</button
+          ><small id="version-label"></small>
+        </div>
+      </aside>
+      <div class="workspace">
+        <header class="topbar">
+          <span id="site-name">Fieldnotes workspace</span
+          ><span class="topbar-note">A place for useful knowledge</span
+          ><button data-action="refresh" class="icon" aria-label="Refresh">
+            ↻
+          </button>
+        </header>
+        <main id="main" tabindex="-1">
+          <p class="muted">Opening your workspace…</p>
+        </main>
+        <footer>
+          <span>Collect. Connect. Keep useful.</span
+          ><span>FIELDNOTES / OPEN SOURCE</span>
+        </footer>
+      </div>
+    </div>
+    <dialog id="dialog" aria-labelledby="dialog-title">
+      <div id="dialog-content"></div>
+    </dialog>
+    <div id="toast" role="status" aria-live="polite" hidden></div>
+  </body>
+</html>
